@@ -1,0 +1,9 @@
+{
+  "name": "advent-2019",
+  "version": "0.1.0",
+  "description": "Advent of Code 2019",
+  "type": "module",
+  "keywords": [],
+  "author": "Joren Broekema <Joren.Broekema@gmail.com>",
+  "license": "ISC"
+}
