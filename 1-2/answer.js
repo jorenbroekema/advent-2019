@@ -1,3 +1,6 @@
+/**
+ * Fuel problem extended
+ */
 import data from '../1-1/data.js';
 
 const calcFuel = mass => {

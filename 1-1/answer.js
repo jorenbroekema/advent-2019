@@ -1,3 +1,6 @@
+/**
+ * Fuel problem
+ */
 import data from './data.js';
 
 const totalFuel = data.reduce(
