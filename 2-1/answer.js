@@ -6,7 +6,7 @@
  *       index <opcodeIndex+1> and <opcodeIndex+2>
  *       and set value at <opcodeIndex+3> to this sum
  *
- *  2 => multiple integers that are located at
+ *  2 => multipy integers that are located at
  *       index <opcodeIndex+1> and <opcodeIndex+2>
  *       and set value at <opcodeIndex+3> to this result
  *
