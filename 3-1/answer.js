@@ -88,7 +88,7 @@ for (let entry of grid.entries()) {
 const distances = [];
 intersections.forEach(intersection => {
   distances.push(parseInt(Math.abs(intersection.split('|')[0], 10)) + Math.abs(parseInt(intersection.split('|')[1], 10)));
-})
+});
 
 // Log the closest intersection
 console.log(Math.min(...distances));
