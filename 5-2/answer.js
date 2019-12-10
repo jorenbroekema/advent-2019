@@ -20,6 +20,7 @@ const opCode = (arr, inputInt) => {
     ]
 
     let amountOfInstrValues = 4;
+    let jump = false;
 
     console.log(`opcode ${opcode} with the following parameters:`);
     console.log(parameters);
@@ -57,6 +58,48 @@ const opCode = (arr, inputInt) => {
           console.log('this is either really bad, followed by 99 opcode || End ||, in that case we have diagnostic code :D!');
         }
         break;
+      case 5: {
+        amountOfInstrValues = 3;
+        const paramA = parameters[0].mode === 0 ? arr[parameters[0].param] : parameters[0].param;
+        if (paramA !== 0) {
+          const paramB = parameters[1].mode === 0 ? arr[parameters[1].param] : parameters[1].param;
+          jump = paramB;
+        }
+      }
+        break;
+      case 6: {
+        amountOfInstrValues = 3;
+        const paramA = parameters[0].mode === 0 ? arr[parameters[0].param] : parameters[0].param;
+        if (paramA === 0) {
+          const paramB = parameters[1].mode === 0 ? arr[parameters[1].param] : parameters[1].param;
+          jump = paramB;
+        }
+      }
+        break;
+      case 7: {
+        amountOfInstrValues = 4;
+        const paramA = parameters[0].mode === 0 ? arr[parameters[0].param] : parameters[0].param;
+        const paramB = parameters[1].mode === 0 ? arr[parameters[1].param] : parameters[1].param;
+        const paramC = parameters[2].param;
+        if (paramA < paramB) {
+          arr[paramC] = 1;
+        } else {
+          arr[paramC] = 0;
+        }
+      }
+        break;
+      case 8: {
+        amountOfInstrValues = 4;
+        const paramA = parameters[0].mode === 0 ? arr[parameters[0].param] : parameters[0].param;
+        const paramB = parameters[1].mode === 0 ? arr[parameters[1].param] : parameters[1].param;
+        const paramC = parameters[2].param;
+        if (paramA === paramB) {
+          arr[paramC] = 1;
+        } else {
+          arr[paramC] = 0;
+        }
+      }
+        break;
       case 99:
         console.log('|| End ||');
         return;
@@ -65,6 +108,10 @@ const opCode = (arr, inputInt) => {
         return;
       }
     }
+
+    if (jump) {
+      return _evaluate(jump);
+    }
     return _evaluate(i + amountOfInstrValues);
   }
   _evaluate(0);
@@ -72,4 +119,4 @@ const opCode = (arr, inputInt) => {
   return arr;
 };
 
-opCode(data, 1);
+opCode(data, 5);
